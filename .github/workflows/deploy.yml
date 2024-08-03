@@ -1,4 +1,4 @@
-hi name: build and deploy fixtures
+name: build and deploy fixtures
 
 on:
   push:
