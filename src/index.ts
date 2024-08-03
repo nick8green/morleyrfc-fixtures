@@ -2,9 +2,10 @@ import moment from 'moment';
 import XLSX from 'xlsx';
 import { writeFileSync } from 'fs';
 import { createEvents, DateArray } from 'ics';
+import { join } from 'path';
 
 const main = () => {
-  const filePath = '/Users/nickgreen/workspace/code/morleyrfc/fixture-processing/in/MRFC-FIXTURES-2023-24.xlsx';
+  const filePath = join(__dirname, '/in/MRFC-FIXTURES-2023-24.xlsx');
   const rows = readSpreadsheet(filePath);
 
   const firstRow = 4;
