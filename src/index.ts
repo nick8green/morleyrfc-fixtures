@@ -4,8 +4,8 @@ import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { createEvents } from 'ics';
 import { join } from 'path';
 
-import { Club, findTeam, home, Team } from './team';
-import { getFixture, Match, MatchType, Venue } from './fixture';
+import { home, Team } from './team';
+import { getFixture, Match, Venue } from './fixture';
 
 const main = () => {
   const root = join(__dirname, '../in/');
@@ -54,13 +54,17 @@ const outputToIsc = (fixtures: Match[]): void => {
   fixtures.forEach((f: Match) => {
     const title = `${f.venue === Venue.HOME ? f.team : f.opposition.name} vs. ${f.venue === Venue.AWAY ? f.team : f.opposition.name}`;
     const duration = { hours: 1, minutes: 30 };
-    let start = moment(f.date).format('YYYY-M-D-H-m').split("-").map(v => parseInt(v));
-    let end = moment(f.meet).add(duration).format("YYYY-M-D-H-m").split("-").map(v => parseInt(v));
+    let date = f.date;
+    if (parseInt(moment(date).format('M')) > 3 && parseInt(moment(date).format('M')) < 11) {
+      date = moment(date).subtract(1, 'hours').toDate();
+    }
+    let start = moment(date).format('YYYY-M-D-H-m').split("-").map(v => parseInt(v));
+    // let end = moment(f.meet).add(duration).format("YYYY-M-D-H-m").split("-").map(v => parseInt(v));
 
     const event = {
       title,
       start,
-      end,
+      // end,
       duration,
       description: `${title}\n${f.type}\nMeet: ${moment(f.meet).format('H:mma')}\nKick Off: ${moment(f.date).format('H:mma')}`,
       location: f.venue === Venue.HOME ? home : f.opposition.ground,
