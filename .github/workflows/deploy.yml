@@ -1,4 +1,4 @@
-if name: build and deploy fixtures
+name: build and deploy fixtures
 
 on:
   push:
@@ -32,6 +32,8 @@ jobs:
         run: |
           npm ci --legacy-peer-deps
           npm run build
+          pwd
+          ls -la
           npm start
 
       - name: setup pages
