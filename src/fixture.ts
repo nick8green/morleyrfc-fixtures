@@ -60,6 +60,9 @@ const getTimings = (time: number): [Date, Date] => {
     if ([0, 1, 10, 11].includes(date.getMonth())) {
         date.setHours(14, 15);
     }
+    if (date.getDay() === 4) {
+        date.setHours(19, 30);
+    }
 
     const meet = new Date(date.getTime());;
     meet.setHours(date.getHours() - 2)
