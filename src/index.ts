@@ -5,7 +5,7 @@ import { createEvents, DateArray } from 'ics';
 import { join } from 'path';
 
 const main = () => {
-  const filePath = join(__dirname, '/in/MRFC-FIXTURES-2023-24.xlsx');
+  const filePath = join(__dirname, 'in/MRFC-FIXTURES-2023-24.xlsx');
   const rows = readSpreadsheet(filePath);
 
   const firstRow = 4;
