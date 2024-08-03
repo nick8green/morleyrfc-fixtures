@@ -28,10 +28,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: build storybook
+      - name: build
         run: |
           npm ci --legacy-peer-deps
           npm run build
+          npm start
 
       - name: setup pages
         uses: actions/configure-pages@v5
