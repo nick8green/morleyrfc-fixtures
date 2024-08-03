@@ -1,4 +1,4 @@
-name: build and deploy fixtures
+hi name: build and deploy fixtures
 
 on:
   push:
@@ -32,9 +32,7 @@ jobs:
         run: |
           npm ci --legacy-peer-deps
           npm run build
-          pwd
-          ls -la
-          npm start
+          node .
 
       - name: setup pages
         uses: actions/configure-pages@v5
