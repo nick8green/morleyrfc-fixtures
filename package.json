@@ -1,0 +1,26 @@
+{
+  "name": "fixture-processing",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node-esm src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nick Green <nick-green@live.co.uk> (https://www.nick8green.co.uk/)",
+  "license": "MIT",
+  "dependencies": {
+    "ics": "^3.2.0",
+    "inquirer": "^9.2.8",
+    "moment": "^2.29.4",
+    "ts-node": "^10.9.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.4",
+    "typescript": "^5.1.6"
+  },
+  "type": "module"
+}
