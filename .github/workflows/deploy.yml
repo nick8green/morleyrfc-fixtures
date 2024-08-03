@@ -31,8 +31,7 @@ jobs:
       - name: build
         run: |
           npm ci --legacy-peer-deps
-          npm run build
-          node .
+          npm start
 
       - name: setup pages
         uses: actions/configure-pages@v5
@@ -40,7 +39,7 @@ jobs:
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './fixtures.ics'
+          path: './out'
 
       - name: deploy to github pages
         id: deployment
