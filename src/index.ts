@@ -23,6 +23,9 @@ const main = () => {
     }
   });
 
+  // uncomment the line below to filter out past matches
+  // fixtures = fixtures.filter((fixture: any) => fixture.date > new Date());
+
   outputCsvToConsole(fixtures);
   outputToIsc(fixtures);
 };
@@ -50,14 +53,14 @@ const outputToIsc = (fixtures: Match[]): void => {
 
   fixtures.forEach((f: Match) => {
     const title = `${f.venue === Venue.HOME ? f.team : f.opposition.name} vs. ${f.venue === Venue.AWAY ? f.team : f.opposition.name}`;
-    const duration = { hours: 5, minutes: 30 };
-    let start = moment(f.meet).format('YYYY-M-D-H-m').split("-").map(v => parseInt(v));
+    const duration = { hours: 1, minutes: 30 };
+    let start = moment(f.date).format('YYYY-M-D-H-m').split("-").map(v => parseInt(v));
     let end = moment(f.meet).add(duration).format("YYYY-M-D-H-m").split("-").map(v => parseInt(v));
 
     const event = {
       title,
       start,
-      // end,
+      end,
       duration,
       description: `${title}\n${f.type}\nMeet: ${moment(f.meet).format('H:mma')}\nKick Off: ${moment(f.date).format('H:mma')}`,
       location: f.venue === Venue.HOME ? home : f.opposition.ground,
@@ -95,25 +98,20 @@ const rowToFixtures = (row: any[]): Match[] => {
     return matches;
   }
 
-  try {
-    matches.push(getFixture(Team.MAROONS, row, row[1]));
-  } catch (e: any) {
-    console.error(e);
-    if (e.message !== 'no fixture!') {
-      throw e;
-    }
-  }
-
-  if (row[3]) {
+  [Team.MAROONS, Team.CAVALIERS].forEach((team: Team) => {
     try {
-      matches.push(getFixture(Team.MAROONS, row, row[3]));
+      const oppo = row[team === Team.MAROONS ? 1 : 3];
+      if (!oppo) {
+        return;
+      }
+      matches.push(getFixture(team, row, oppo));
     } catch (e: any) {
       console.error(e);
       if (e.message !== 'no fixture!') {
         throw e;
       }
     }
-  }
+  });
 
   return matches;
 };
