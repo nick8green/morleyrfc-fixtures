@@ -33,7 +33,7 @@ const opposition: Club[] = [
     { ground: 'Standbridge Lane, Sandal Magna, Wakefield, WF2 7DY', name: 'Sandal' },
     { ground: '124 Ashby Road, Scunthorpe, DN16 2AG', name: 'Scunthorpe' },
     { ground: 'Grove Park, Lower Greenfoot, Settle, BD24 9RB', name: 'North Ribblesdale' },
-    { ground: '???', name: 'Hallam' },
+    { ground: '116 Northfield Rd, Sheffield, S10 1QS', name: 'Hallamshire' },
     { ground: '1 Shay Lane, Bradford, BD9 6SL', name: 'Bradford Salem' },
   ];
 
