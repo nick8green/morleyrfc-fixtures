@@ -75,6 +75,11 @@ const excelDateToJSDate = (date: number): Date => {
 };
 
 const getType = (opposition: Club, type: MatchType): MatchType => {
+    const regex = /\(PJ Cup\)$/;
+    if (regex.exec(opposition.name) !== null) {
+        return MatchType.NATIONAL;
+    }
+
     switch (opposition.name) {
         case 'Yorkshire Cup Reserve Date':
         case 'YC ?':
