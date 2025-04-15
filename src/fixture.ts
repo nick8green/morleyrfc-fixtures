@@ -31,7 +31,7 @@ export const getFixture = (team: Team, row: any, opposition: string) => {
         meet,
         opposition: oppo,
         team,
-        type: getType(oppo, type),
+        type: getType({ name: opposition }, type),
         venue,
     };
 };

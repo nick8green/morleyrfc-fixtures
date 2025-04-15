@@ -111,7 +111,8 @@ const rowToFixtures = (row: any[]): Match[] => {
       matches.push(getFixture(team, row, oppo));
     } catch (e: any) {
       console.error(e);
-      if (e.message !== 'no fixture!') {
+      if (e.message !== 'no fixture!' && e.message !== 'no game weekend!') {
+        console.error(`Error processing row: ${row}`);
         throw e;
       }
     }

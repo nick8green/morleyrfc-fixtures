@@ -38,15 +38,18 @@ const opposition: Club[] = [
   ];
 
   export const findTeam = (team: string): Club => {
+    console.log('findTeam', team);
     if (/Y Cup|YC \?/.exec(team)) {
       return {
         name: 'Yorkshire Cup Reserve Date',
       };
-    } else if (team === 'BREAK' || team === 'Reserve') {
+    } else if (team === 'BREAK') {
+      throw new Error('no game weekend!');
+    } else if (team === 'Reserve') {
       return {
         name: 'League Reserve Date',
       };
-    } else if (/RFU CUP 1|PJ Cup/.exec(team)) {
+    } else if (/^(?:RFU CUP 1|PJ Cup)$/.exec(team.trim())) {
       return {
         name: 'National Cup Reserve Date',
       };
@@ -58,10 +61,11 @@ const opposition: Club[] = [
     if (team === 'TBC') {
       throw new Error('no fixture!');
     }
-    const oppo = opposition.find((club: Club) => club.name === team.replace(/ 2\??/, ''));
+    const oppo = opposition.find((club: Club) => club.name === team.replace(/ 2\??/, '').replace(/ \(PJ Cup\)?/, ''));
     if (!oppo) {
       throw new Error(`could not find the right club "${team}"`);
     }
+    console.log('findTeam', team, oppo);
     return oppo;
   };
 
