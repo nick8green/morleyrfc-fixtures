@@ -35,6 +35,7 @@ const opposition: Club[] = [
     { ground: 'Grove Park, Lower Greenfoot, Settle, BD24 9RB', name: 'North Ribblesdale' },
     { ground: '116 Northfield Rd, Sheffield, S10 1QS', name: 'Hallamshire' },
     { ground: '1 Shay Lane, Bradford, BD9 6SL', name: 'Bradford Salem' },
+    { ground: 'Stamford Rd, West Bridgford, Nottingham, NG2 6GF', name: 'West Bridgeford' },
   ];
 
   export const findTeam = (team: string): Club => {
