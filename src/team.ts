@@ -36,6 +36,8 @@ const opposition: Club[] = [
     { ground: '116 Northfield Rd, Sheffield, S10 1QS', name: 'Hallamshire' },
     { ground: '1 Shay Lane, Bradford, BD9 6SL', name: 'Bradford Salem' },
     { ground: 'Stamford Rd, West Bridgford, Nottingham, NG2 6GF', name: 'West Bridgeford' },
+    { ground: 'Clifton Park, Shipton Road, York, Yorkshire, YO30 5RE', name: 'York' },
+    { ground: 'Feathers Field, Percy Road, Pocklington, East Riding of Yorkshire, YO42 2QB', name: 'Pocklington' },
   ];
 
   export const findTeam = (team: string): Club => {
@@ -46,9 +48,13 @@ const opposition: Club[] = [
       };
     } else if (team === 'BREAK') {
       throw new Error('no game weekend!');
-    } else if (team === 'Reserve') {
+    } else if (team.toLowerCase() === 'reserve') {
       return {
         name: 'League Reserve Date',
+      };
+    } else if (team.toLowerCase() === 'play offs') {
+      return {
+        name: 'League Play Off Reserve Date',
       };
     } else if (/^(?:RFU CUP 1|PJ Cup)$/.exec(team.trim())) {
       return {
