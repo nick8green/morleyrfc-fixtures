@@ -38,6 +38,9 @@ const opposition: Club[] = [
     { ground: 'Stamford Rd, West Bridgford, Nottingham, NG2 6GF', name: 'West Bridgeford' },
     { ground: 'Clifton Park, Shipton Road, York, Yorkshire, YO30 5RE', name: 'York' },
     { ground: 'Feathers Field, Percy Road, Pocklington, East Riding of Yorkshire, YO42 2QB', name: 'Pocklington' },
+    { ground: 'Apollo Capital Stadium, Rudding Lane, Harrogate, North Yorkshire, HG3 1DQ', name: 'Harrogate' },
+    { ground: 'Moor Rd, Wath upon Dearne, Rotherham, S63 7RS', name: 'Wath Upon Dearne' },
+    { ground: 'South Leeds Stadium, Middleton Grove, LS11 5DJ', name: 'Hunslet Wolves' },
   ];
 
   export const findTeam = (team: string): Club => {
