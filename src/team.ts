@@ -71,7 +71,7 @@ const opposition: Club[] = [
     if (team === 'TBC') {
       throw new Error('no fixture!');
     }
-    const oppo = opposition.find((club: Club) => club.name === team.replace(/ 2\??/, '').replace(/ \(PJ Cup\)?/, ''));
+    const oppo = opposition.find((club: Club) => club.name === team.replace(/ 2\??/, '').replace(/ \((?:PJ Cup|YC)\)?/, ''));
     if (!oppo) {
       throw new Error(`could not find the right club "${team}"`);
     }
